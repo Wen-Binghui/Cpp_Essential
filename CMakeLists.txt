@@ -3,4 +3,4 @@ project(Cpp_Essential)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Cpp_Essential main.cpp)
+add_executable(Cpp_Essential main.cpp functions.h)

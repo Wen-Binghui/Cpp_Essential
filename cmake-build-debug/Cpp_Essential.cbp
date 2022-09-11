@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/File_c++/Cpp_Essential/functions.h">
+			<Option target="Cpp_Essential"/>
+		</Unit>
 		<Unit filename="D:/File_c++/Cpp_Essential/main.cpp">
 			<Option target="Cpp_Essential"/>
 		</Unit>

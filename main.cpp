@@ -57,10 +57,18 @@ vector<int> *fibonacci(int index) {
         }
         return &fib_vec;
     }
-
+}
+template<typename elemType>
+// 泛化find
+elemType *find_(elemType *start_pos, elemType *end_pos, elemType &target) {
+    if (!start_pos || !end_pos) return nullptr;
+    for (; start_pos != end_pos; start_pos++) {
+        if (*start_pos == target) return start_pos;
+    }
+    return nullptr;
 }
 
-int main() {
+int main_chap2() {
     // region 向量与数组
     vector<int> vec(10);
     vec[1] = 1;
@@ -104,9 +112,16 @@ int main() {
     enum myType { bb, cc, dd = 1 };
     cout << dd << endl;
 
+    return 0;
+}
 
-
-
-
+int main() {
+    vector<int> vec_int = {1, 1, 3, 4, 5, 8};
+    int arr_int[] = {1, 1, 3, 4, 5, 8};
+    int tar = 8;
+    int *pos_find_vec = find_(&vec_int[0], &vec_int[vec_int.size()], tar);
+    cout << *pos_find_vec << endl;
+    int *pos_find_arr = find_(&arr_int[0], &arr_int[vec_int.size()], tar);
+    cout << *pos_find_arr << endl;
     return 0;
 }
