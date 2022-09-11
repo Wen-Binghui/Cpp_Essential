@@ -78,9 +78,9 @@ int main_chap2() {
     // region 指针
     int *pi = nullptr; //
     cout << pi << endl;
-    if (pi) {
-        cout << "pi is not null.\n";
-    }
+//    if (pi) {
+//        cout << "pi is not null.\n";
+//    }
     int b = 3;
     int *a = &b;
     cout << *a << endl;
@@ -116,12 +116,23 @@ int main_chap2() {
 }
 
 int main() {
-    vector<int> vec_int = {1, 1, 3, 4, 5, 8};
-    int arr_int[] = {1, 1, 3, 4, 5, 8};
-    int tar = 8;
-    int *pos_find_vec = find_(&vec_int[0], &vec_int[vec_int.size()], tar);
-    cout << *pos_find_vec << endl;
-    int *pos_find_arr = find_(&arr_int[0], &arr_int[vec_int.size()], tar);
-    cout << *pos_find_arr << endl;
+//    vector<int> vec_int = {1, 1, 3, 4, 5, 8};
+//    int arr_int[] = {1, 1, 3, 4, 5, 8};
+//    int tar = 8;
+//    int *pos_find_vec = find_(&vec_int[0], &vec_int[vec_int.size()], tar);
+//    cout << *pos_find_vec << endl;
+//    int *pos_find_arr = find_(&arr_int[0], &arr_int[vec_int.size()], tar);
+//    cout << *pos_find_arr << endl;
+    vector<string> svec;
+    vector<string>::iterator iter = svec.begin();
+
     return 0;
 }
+
+
+
+
+
+//int main(){
+//
+//}
