@@ -3,7 +3,7 @@
 using namespace std;
 
 //! 重载函数
-void say_hello(string &addition_msg) {
+void say_hello(string &addition_msg, ostream &os = cout) { // 默认参数
     printf("\nHello %s\n", addition_msg.c_str()); //? 将C++ string转化成 c string
 }
 void say_hello() { // 重载函数
@@ -16,7 +16,7 @@ void display_message(const string &msg, const vector<elemType> &vec) {
     cout << msg << endl;
     for (int i = 0; i < vec.size(); i++) {
         elemType ele = vec[i];
-        printf("ele_%04d: %4.2f\n", i, (float)ele);
+        printf("ele_%04d: %4.2f\n", i, (float) ele);
     }
 }
 
@@ -38,14 +38,36 @@ void bubble_sort(vector<int> &ori_vec) {
 
 }
 
+// 局部静态对象
+vector<int> *fibonacci(int index) {
+    const int max_size = 1024;
+    if (index > max_size || index < 1) {
+        printf("Invalid index.\n");
+    }
+    static vector<int> fib_vec;
+    cout << fib_vec.size() << endl;
+    if (fib_vec.size() > index) {
+        printf("Already calculated.\n");
+        return &fib_vec;
+    } else {
+
+        for (unsigned i = fib_vec.size(); i < index; ++i) {
+            if (i == 0 || i == 1) fib_vec.push_back(1);
+            else fib_vec.push_back(fib_vec[i - 1] + fib_vec[i - 2]);
+        }
+        return &fib_vec;
+    }
+
+}
+
 int main() {
-    // ! 向量与数组
+    // region 向量与数组
     vector<int> vec(10);
     vec[1] = 1;
     cout << vec[0] << vec[1] << vec[3] << endl; // 如果是没定义的int，默认为0
     int arr[199];
-//    cout<<arr; // 如果是没定义的int，乱码
-    // ! 指针
+    // endregion
+    // region 指针
     int *pi = nullptr; //
     cout << pi << endl;
     if (pi) {
@@ -54,8 +76,8 @@ int main() {
     int b = 3;
     int *a = &b;
     cout << *a << endl;
-
-    //! 排序
+    // endregion
+    // region  排序
     vector<int> vec_2sort = {3, 1, 4, 1, 5, 7};
     vector<float> vec_f = {3, 1, 4, 1, 5, 7};
     bubble_sort(vec_2sort);
@@ -64,12 +86,27 @@ int main() {
     for (int i: vec_2sort) { //! 相当于 i in vec_2sort:
         printf("%d, ", i);
     }
+    // endregion
+    // region 函数重载
     string msg = "from Me";
     say_hello(msg);
     say_hello();
 
     display_message(msg, vec_2sort);
     display_message(msg, vec_f);
+    // endregion
+
+    vector<int> *fib = fibonacci(3);
+    for (int i: *fib) {
+        cout << i << endl;
+    }
+
+    enum myType { bb, cc, dd = 1 };
+    cout << dd << endl;
+
+
+
+
 
     return 0;
 }
